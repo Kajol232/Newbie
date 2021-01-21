@@ -15,7 +15,9 @@ Students can apply for job and their profile will be automatically forwarded to 
 Once a student get recruited by the organization, and completes the job, organizations and students can create review on the job post and the job is automatically added to the student profile which can be downloaded in PDF format as a CV.
 
 ##Models
+
 ###Users
+
 ####Admin
 Approve registration made by both organization and students.
 
@@ -47,7 +49,9 @@ Recruits students.
 Give reviews on job done by the student.
 
 ###Jobs
+
 ###Reviews
+
 ###Application
 
 
