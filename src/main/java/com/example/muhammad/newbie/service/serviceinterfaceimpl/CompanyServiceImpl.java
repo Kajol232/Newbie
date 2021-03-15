@@ -18,7 +18,7 @@ public class CompanyServiceImpl implements CompanyService {
     private Response response = new Response();
     @Override
     public Object addCompany(Company company) {
-        Request request = new Request("CompanyRequest");
+        Request request = new Request("CompanyRequest", company);
         company.setApproved(false);
         requestRepository.save(request);
         companyRepository.save(company);

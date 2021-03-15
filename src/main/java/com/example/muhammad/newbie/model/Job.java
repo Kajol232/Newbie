@@ -23,6 +23,8 @@ public class Job {
             inverseJoinColumns = @JoinColumn(name = "skillset_id")
     )
     private List<Skill> skillSet;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Company company;
     private String jobCriteria;
     private String jobDescription;
     private int numOfCandidatesRequired;
@@ -33,7 +35,8 @@ public class Job {
             inverseJoinColumns = @JoinColumn(name = "reviews_id")
     )
     private List<Reviews> reviews;
-
+    @ManyToOne
+    private Users recruiter;
     private String status;
     //use to set deadline
     private Date registrationEndDate;
@@ -50,7 +53,20 @@ public class Job {
     protected Job() {
     }
 
-    public Job(String title, List<Skill> skillSet, String jobCriteria, String jobDescription, int numOfCandidatesRequired, List<Reviews> reviews, String status, Date registrationEndDate, LocalDateTime creationDate, List<Application> applicants) {
+    public Job(String title, List<Skill> skillSet, Company company, String jobCriteria, String jobDescription,
+               int numOfCandidatesRequired, String status, Date registrationEndDate, Users recruiter) {
+        this.title = title;
+        this.skillSet = skillSet;
+        this.company = company;
+        this.jobCriteria = jobCriteria;
+        this.jobDescription = jobDescription;
+        this.numOfCandidatesRequired = numOfCandidatesRequired;
+        this.status = status;
+        this.registrationEndDate = registrationEndDate;
+        this.recruiter = recruiter;
+    }
+
+    public Job(String title, List<Skill> skillSet, String jobCriteria, String jobDescription, int numOfCandidatesRequired, List<Reviews> reviews, String status, Date registrationEndDate, List<Application> applicants) {
         this.title = title;
         this.skillSet = skillSet;
         this.jobCriteria = jobCriteria;
@@ -59,7 +75,6 @@ public class Job {
         this.reviews = reviews;
         this.status = status;
         this.registrationEndDate = registrationEndDate;
-        this.creationDate = creationDate;
         this.applicants = applicants;
     }
 
@@ -145,5 +160,21 @@ public class Job {
 
     public void setApplicants(List<Application> applicants) {
         this.applicants = applicants;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Users getRecruiter() {
+        return recruiter;
+    }
+
+    public void setRecruiter(Users recruiter) {
+        this.recruiter = recruiter;
     }
 }
