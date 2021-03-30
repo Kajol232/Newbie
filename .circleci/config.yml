@@ -21,7 +21,7 @@ jobs:
             mvn -B -DskipTests clean package
   docker-lint:
     docker:
-      - image: hadolint/hadolint
+      - image: circleci/docker@1.5.0
     steps:
       - checkout
       - run: ls /workspace/app -lah
