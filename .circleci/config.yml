@@ -18,7 +18,7 @@ jobs:
           working_directory: ~/workspace/app
           name: Install dependencies
           command: |
-            mvn install -DskipTests
+            ./mvnw install -DskipTests
   docker-lint:
     docker:
       - image: hadolint/hadolint
