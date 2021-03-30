@@ -7,17 +7,18 @@ jobs:
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # Be sure to upate the tag on this image to a more stable version, using latest can result in unstable builds.
     docker:
-      - image: openjdk:latest
+      - image: maven:3.6.3-openjdk-15-slim
     steps:
       # Checkout the code as the first step.
       - checkout
       - run: ls -lah
+      - run: mvn --version
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ~/workspace/app
           name: Install dependencies
           command: |
-            .mvnw install -DskipTests
+            mvn -B -DskipTests clean package
   docker-lint:
     docker:
       - image: hadolint/hadolint
