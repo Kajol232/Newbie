@@ -1,5 +1,23 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@1.2.6
+
+workflows:
+  # Below is the definition of your workflow.
+  # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build job above.
+  # CircleCI will run this workflow on every commit.
+  # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+  heroku_deploy:
+    jobs:
+      - build
+      - heroku/deploy-via-git:
+          requires:
+            - build
+          filters:
+            branches:
+              only: sequential-branch-filter
+
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build:
@@ -19,17 +37,4 @@ jobs:
           name: Install dependencies
           command: |
             mvn -B -DskipTests clean package
-  heroku_deploy:
-    orbs:
-      heroku: circleci/heroku@0.0.10.
-workflows:
-  # Below is the definition of your workflow.
-  # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build job above.
-  # CircleCI will run this workflow on every commit.
-  # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
-  heroku_deploy:
-    jobs:
-      - build
-      - heroku/deploy-via-git:
-          requires:
-            - build
+
