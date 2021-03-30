@@ -1,31 +1,32 @@
 version: 2.1
+
 jobs:
   build:
     docker:
-      - image: openjdk
+      - image: openjdk:latest
     steps:
       - checkout
       - run: ls -lah
       - run: 
-        working_directory: ~/project/src
+        working_directory: ~/workspace/app
         name: Install dependencies
         command: mvn install
-docker-lint:
-  docker:
-    - image: hadolint/hadolint
-  steps:
-    - checkout
-    - run: ls ~/project/src -lah
-    - run:
-      working_directory: ~/project/src
-      name: Run hadolint
-      command: |
-        hadolint Dockerfile
+  docker-lint:
+    docker:
+      - image: hadolint/hadolint
+    steps:
+      - checkout
+      - run: ls /workspace/app -lah
+      - run:
+        working_directory: ~/project/src
+        name: Run hadolint
+        command: |
+          hadolint Dockerfile
 workflows:
   build:
     jobs:
        - build
        - docker-lint:
          requires:
-          - build
+           - build
       
