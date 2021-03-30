@@ -19,25 +19,17 @@ jobs:
           name: Install dependencies
           command: |
             mvn -B -DskipTests clean package
-  docker-lint:
-    docker:
-      - image: circleci/docker@1.5.0
-    steps:
-      - checkout
-      - run: ls /workspace/app -lah
-      - run:
-          working_directory: /workspace/app
-          name: Run hadolint
-          command: |
-            hadolint  Dockerfile
+  heroku_deploy:
+    orbs:
+      heroku: circleci/heroku@0.0.10.
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build job above.
   # CircleCI will run this workflow on every commit.
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
-  build:
+  heroku_deploy:
     jobs:
       - build
-      - docker-lint:
+      - heroku/deploy-via-git:
           requires:
             - build
