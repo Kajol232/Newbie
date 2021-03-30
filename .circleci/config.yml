@@ -13,6 +13,7 @@ jobs:
       - checkout
       - run: ls -lah
       - run: mvn --version
+      - run: ls /workspace/app -lah
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ~/workspace/app
