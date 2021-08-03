@@ -1,7 +1,8 @@
 package com.example.muhammad.newbie.security.websecurity;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,7 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(final AuthenticationManagerBuilder authManager)throws Exception {
         authManager.inMemoryAuthentication()
@@ -27,4 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
 }

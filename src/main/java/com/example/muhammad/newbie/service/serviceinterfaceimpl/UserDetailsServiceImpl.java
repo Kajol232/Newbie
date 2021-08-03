@@ -43,11 +43,11 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
         Optional<Users> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()){
             Users users = optionalUser.get();
-
             List<String> roleList = new ArrayList<String>();
             for(UserRole role: users.getRoles()){
                 roleList.add(role.getName());
             }
+
             return User.builder()
                     .password(users.getPassword())
                     .disabled(users.isActive())

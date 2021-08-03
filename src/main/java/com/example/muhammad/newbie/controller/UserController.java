@@ -6,13 +6,21 @@ import com.example.muhammad.newbie.model.dao.RegisterUser;
 import com.example.muhammad.newbie.repository.UserRepository;
 import com.example.muhammad.newbie.repository.UserRoleRepository;
 import com.example.muhammad.newbie.service.serviceinterfaceimpl.UserDetailsServiceImpl;
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
+import org.keycloak.representations.IDToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8181")
@@ -26,7 +34,6 @@ public class UserController {
     private UserRoleRepository roleRepository;
 
     private Response response = new Response();
-
 
     @GetMapping(path = "/lists", produces = "application/json")
     public List<Users> getAllUsers(){

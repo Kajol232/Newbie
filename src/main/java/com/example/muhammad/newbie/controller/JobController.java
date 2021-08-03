@@ -34,7 +34,7 @@ public class JobController {
     }
     @PostMapping(path = "/createJob/{id}")
     public Object createJob(@RequestBody Job job, @PathVariable("id") long companyId){
-        return null;
+        return jobService.createJob(companyId, job);
 
     }
 }

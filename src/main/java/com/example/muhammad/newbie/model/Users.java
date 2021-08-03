@@ -1,8 +1,6 @@
 package com.example.muhammad.newbie.model;
 
-
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
