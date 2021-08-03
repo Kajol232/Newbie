@@ -1,6 +1,9 @@
 # Newbie
 An online Job recruitments portal for students
 
+## Structural Diagram
+https://drive.google.com/file/d/1D8GVm5zyRAoybaNeAQVbprEsX1wjddsi/view?usp=sharing
+
 ## Introduction
 Newbie is a web based online job management portal that focuses on recruiting students for short term based jobs or tasks and serves as a resume builder. 
 It is a platform that gradually introduces students to real-life.
@@ -39,6 +42,7 @@ An approved student can search for jobs on his/her dashboard and also set a sear
 An organization are expected to create an admin on the platform once approved; the company-admin will be responsible for creating job post, creating recruiters and assigning recruiters to jobs. A company recriuter manages the recruitment process and recruits students for the job. Once the job/project is done, the recruiter/company-admin gives review on the work ethics of student.
 
 Every job done by the student are added to the student profile and can be downloaded in form of a resume.
+
 
 
 
