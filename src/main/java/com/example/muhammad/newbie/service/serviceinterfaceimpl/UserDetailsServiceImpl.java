@@ -9,7 +9,6 @@ import com.example.muhammad.newbie.service.serviceinterface.IUserService;
 import com.example.muhammad.newbie.utils.FileUploadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,21 +35,21 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
     private RequestRepository requestRepository;
     private Response response = new Response();
 
-    private String uploadDir = "C:\\Users\\user\\Documents\\newbie\\src\\main\\resources\\static\\userImages\\";
+    private String uploadDir = "C:\\User\\user\\Documents\\newbie\\src\\main\\resources\\static\\userImages\\";
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Users> optionalUser = userRepository.findByEmail(email);
+        Optional<User> optionalUser = userRepository.findByEmail(email);
         if (optionalUser.isPresent()){
-            Users users = optionalUser.get();
+            User user = optionalUser.get();
             List<String> roleList = new ArrayList<String>();
-            for(UserRole role: users.getRoles()){
+            for(UserRole role: user.getRoles()){
                 roleList.add(role.getName());
             }
 
-            return User.builder()
-                    .password(users.getPassword())
-                    .disabled(users.isActive())
+            return org.springframework.security.core.userdetails.User.builder()
+                    .password(user.getPassword())
+                    .disabled(user.isActive())
                     .roles(roleList.toArray(new String[0]))
                     .build();
         }else {
@@ -98,7 +97,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
 
             String fileName = UUID.randomUUID().toString();
 
-            Users user = new Users();
+            User user = new User();
             user.setName(registerUser.getName());
             user.setEmail(registerUser.getEmail());
             user.setPassword(passwordEncoder.encode(registerUser.getPassword()));
@@ -139,8 +138,8 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
     }
 
     @Override
-    public Object updateUserDetails(Users user, long id) {
-        Users u = userRepository.findUsersById(id);
+    public Object updateUserDetails(User user, long id) {
+        User u = userRepository.findUsersById(id);
         u.setDob(user.getDob());
         u.setGender(user.getGender());
         u.setMobile(user.getMobile());
@@ -154,7 +153,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
     }
 
     @Override
-    public void setStudentDetails(RegisterUser registerUser, Users user) {
+    public void setStudentDetails(RegisterUser registerUser, User user) {
         user.setSkillSet(registerUser.getSkillsetList());
         user.setInstitution(registerUser.getInstitution());
         user.setApproved(false);
@@ -162,7 +161,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService 
     }
 
     @Override
-    public void setRecruiterDetails(RegisterUser registerUser, Users user) {
+    public void setRecruiterDetails(RegisterUser registerUser, User user) {
         user.setCompany(registerUser.getCompany());
         user.setApproved(true);
 

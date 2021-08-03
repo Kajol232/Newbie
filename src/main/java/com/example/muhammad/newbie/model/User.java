@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_account")
-public class Users {
+public class User {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,12 +59,12 @@ public class Users {
 
 
 
-    public Users() {
+    public User() {
     }
 
     //for all users
-    public Users(List<UserRole> roles,String name, String email, String password, Date dob, char gender,
-                 String mobile, boolean emailNotification, String imageUrl,String title) {
+    public User(List<UserRole> roles, String name, String email, String password, Date dob, char gender,
+                String mobile, boolean emailNotification, String imageUrl, String title) {
         this.roles = roles;
         this.name = name;
         this.email = email;
@@ -77,8 +77,8 @@ public class Users {
         this.title =title;
     }
     //for students
-    public Users(List<UserRole> roles, String name, String email, String password, Date dob, char gender, String mobile,
-                 boolean emailNotification, String imageUrl, List<Skill> skill, String title, String institution, boolean isApproved) {
+    public User(List<UserRole> roles, String name, String email, String password, Date dob, char gender, String mobile,
+                boolean emailNotification, String imageUrl, List<Skill> skill, String title, String institution, boolean isApproved) {
         this.roles = roles;
         this.name = name;
         this.email = email;
@@ -94,8 +94,8 @@ public class Users {
         this.isApproved = isApproved;
     }
     //for recruiters
-    public Users(List<UserRole> roles, String name, String email, String password, Date dob, char gender, String mobile,
-                 boolean emailNotification, String imageUrl, Company company, String title) {
+    public User(List<UserRole> roles, String name, String email, String password, Date dob, char gender, String mobile,
+                boolean emailNotification, String imageUrl, Company company, String title) {
         this.roles = roles;
         this.name = name;
         this.email = email;
@@ -191,7 +191,7 @@ public class Users {
         if(imageUrl == null ){
             return null;
         }
-        return "C:\\Users\\user\\Documents\\newbie\\src\\main\\resources\\static\\userImages\\" + getId() + "\\" + imageUrl;
+        return "C:\\User\\user\\Documents\\newbie\\src\\main\\resources\\static\\userImages\\" + getId() + "\\" + imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {

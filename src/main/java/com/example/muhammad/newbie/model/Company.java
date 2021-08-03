@@ -23,7 +23,7 @@ public class Company {
             inverseJoinColumns = @JoinColumn(name = "user_id")
 
     )
-    private List<Users> users;
+    private List<User> users;
     private boolean isApproved;
 
     protected Company() {
@@ -45,7 +45,7 @@ public class Company {
     }
 
 
-    public Company(String name, String webUrl, String description, Date establishmentDate, List<Users> users, boolean isApproved) {
+    public Company(String name, String webUrl, String description, Date establishmentDate, List<User> users, boolean isApproved) {
         this.name = name;
         this.webUrl = webUrl;
         this.description = description;
@@ -90,11 +90,11 @@ public class Company {
         this.establishmentDate = establishmentDate;
     }
 
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<Users> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

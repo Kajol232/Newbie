@@ -12,19 +12,19 @@ public class Reviews {
     private long id;
     private String reviewMessage;
     @ManyToOne
-    private Users usersReviewed;
+    private User userReviewed;
     @ManyToOne
-    private Users usersReviewing;
+    private User userReviewing;
     @ManyToOne
     private Job job;
 
     protected Reviews() {
     }
 
-    public Reviews(String reviewMessage, Users usersReviewed, Users usersReviewing, Job job) {
+    public Reviews(String reviewMessage, User userReviewed, User userReviewing, Job job) {
         this.reviewMessage = reviewMessage;
-        this.usersReviewed = usersReviewed;
-        this.usersReviewing = usersReviewing;
+        this.userReviewed = userReviewed;
+        this.userReviewing = userReviewing;
         this.job = job;
     }
 
@@ -40,20 +40,20 @@ public class Reviews {
         this.reviewMessage = reviewMessage;
     }
 
-    public Users getUserReviewed() {
-        return usersReviewed;
+    public User getUserReviewed() {
+        return userReviewed;
     }
 
-    public void setUserReviewed(Users usersReviewed) {
-        this.usersReviewed = usersReviewed;
+    public void setUserReviewed(User userReviewed) {
+        this.userReviewed = userReviewed;
     }
 
-    public Users getUserReviewing() {
-        return usersReviewing;
+    public User getUserReviewing() {
+        return userReviewing;
     }
 
-    public void setUserReviewing(Users usersReviewing) {
-        this.usersReviewing = usersReviewing;
+    public void setUserReviewing(User userReviewing) {
+        this.userReviewing = userReviewing;
     }
 
     public Job getJob() {

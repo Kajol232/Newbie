@@ -36,7 +36,7 @@ public class Job {
     )
     private List<Reviews> reviews;
     @ManyToOne
-    private Users recruiter;
+    private User recruiter;
     private String status;
     //use to set deadline
     private Date registrationEndDate;
@@ -54,7 +54,7 @@ public class Job {
     }
 
     public Job(String title, List<Skill> skillSet, Company company, String jobCriteria, String jobDescription,
-               int numOfCandidatesRequired, String status, Date registrationEndDate, Users recruiter) {
+               int numOfCandidatesRequired, String status, Date registrationEndDate, User recruiter) {
         this.title = title;
         this.skillSet = skillSet;
         this.company = company;
@@ -170,11 +170,11 @@ public class Job {
         this.company = company;
     }
 
-    public Users getRecruiter() {
+    public User getRecruiter() {
         return recruiter;
     }
 
-    public void setRecruiter(Users recruiter) {
+    public void setRecruiter(User recruiter) {
         this.recruiter = recruiter;
     }
 }

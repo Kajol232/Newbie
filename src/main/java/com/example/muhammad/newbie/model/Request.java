@@ -17,16 +17,16 @@ public class Request {
     @CreationTimestamp
     private LocalDateTime regDate;
     @OneToOne
-    private Users users;
+    private User user;
     @OneToOne
     private Company company;
 
     protected Request() {
     }
 
-    public Request(String requestType, Users user) {
+    public Request(String requestType, User user) {
         this.requestType = requestType;
-        this.users = user;
+        this.user = user;
     }
 
     public Request(String requestType, Company company) {
@@ -50,12 +50,12 @@ public class Request {
         this.regDate = regDate;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     public Company getCompany() {

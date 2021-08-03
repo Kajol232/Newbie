@@ -3,7 +3,7 @@ package com.example.muhammad.newbie.service.serviceinterfaceimpl;
 import com.example.muhammad.newbie.model.Company;
 import com.example.muhammad.newbie.model.Request;
 import com.example.muhammad.newbie.model.Response;
-import com.example.muhammad.newbie.model.Users;
+import com.example.muhammad.newbie.model.User;
 import com.example.muhammad.newbie.repository.CompanyRepository;
 import com.example.muhammad.newbie.repository.RequestRepository;
 import com.example.muhammad.newbie.repository.UserRepository;
@@ -26,7 +26,7 @@ public class RequestServiceImpl implements RequestService {
         Request r = requestRepository.findById(id).get();
         String requestType = r.getRequestType();
         if (requestType == "StudentRequest"){
-            Users user = r.getUsers();
+            User user = r.getUsers();
             user.setApproved(true);
             userRepository.save(user);
         }else{

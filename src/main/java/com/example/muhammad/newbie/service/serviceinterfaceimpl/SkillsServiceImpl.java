@@ -2,7 +2,7 @@ package com.example.muhammad.newbie.service.serviceinterfaceimpl;
 
 import com.example.muhammad.newbie.model.Response;
 import com.example.muhammad.newbie.model.Skill;
-import com.example.muhammad.newbie.model.Users;
+import com.example.muhammad.newbie.model.User;
 import com.example.muhammad.newbie.repository.SkillsRepository;
 import com.example.muhammad.newbie.repository.UserRepository;
 import com.example.muhammad.newbie.service.serviceinterface.SkillsService;
@@ -22,7 +22,7 @@ public class SkillsServiceImpl implements SkillsService {
     private Response response = new Response();
     @Override
     public Object addSkillset(String[] skills, long UserId) {
-        Users u = userRepository.findUsersById(UserId);
+        User u = userRepository.findUsersById(UserId);
         List<Skill> skillList = u.getSkillSet();
         for (String s:skills) {
             Skill skill = new Skill(s);

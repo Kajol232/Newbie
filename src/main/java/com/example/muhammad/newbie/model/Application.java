@@ -10,7 +10,7 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne
-    private Users users;
+    private User user;
     @ManyToOne
     private Job job;
     private String status;
@@ -18,8 +18,8 @@ public class Application {
     protected Application() {
     }
 
-    public Application(Users users, Job job, String status) {
-        this.users = users;
+    public Application(User user, Job job, String status) {
+        this.user = user;
         this.job = job;
         this.status = status;
     }
@@ -28,12 +28,12 @@ public class Application {
         return id;
     }
 
-    public Users getUser() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser(Users users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Job getJob() {

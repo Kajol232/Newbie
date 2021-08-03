@@ -3,7 +3,7 @@ package com.example.muhammad.newbie.controller;
 import com.example.muhammad.newbie.model.Company;
 import com.example.muhammad.newbie.model.Request;
 import com.example.muhammad.newbie.model.Response;
-import com.example.muhammad.newbie.model.Users;
+import com.example.muhammad.newbie.model.User;
 import com.example.muhammad.newbie.repository.RequestRepository;
 import com.example.muhammad.newbie.service.serviceinterfaceimpl.RequestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ public class RequestController {
         return (List<Request>) requestRepository.findAll();
     }
     @GetMapping(path = "/getUserDetails/{id}")
-    public Users getUserDetails(@PathVariable("id") long id){
-        return (Users) requestService.getUserDetails(id);
+    public User getUserDetails(@PathVariable("id") long id){
+        return (User) requestService.getUserDetails(id);
     }
     @GetMapping(path = "/getCompanyDetails/{id}")
     public Company getCompanyDetails(@PathVariable("id") long id){
