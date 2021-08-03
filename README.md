@@ -16,14 +16,18 @@ Once a student get recruited by the organization, and completes the job, organiz
 
 ## Models
 
+* Base
 * Users
 * Company
+* Staff
 * Skill
 * Role
 * Jobs
 * Reviews
 * Application
 * Request
+* Institution
+* Degree
 
 ## How Newbie Works
 
